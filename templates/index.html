@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <body>
+
+    <div class="container">
+
+        <h1>Habit Builder</h1>
+
+        <h2>Add New Habit</h2>
+
+        <form action="/add" method="POST" class="add-form">
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter a habit"
+                required
+            >
+            <button type="submit">Add Habit</button>
+        </form>
+
+        <h2>My Habits</h2>
+
+        {% for habit in habits %}
+            <div class="habit">
+
+                <p>
+                    <strong>{{ habit["name"] }}</strong>
+                    -
+                    {% if habit["completed"] %}
+                        Completed
+                    {% else %}
+                        Not completed
+                    {% endif %}
+                </p>
+
+                {% if not habit["completed"] %}
+                    <form action="/complete/{{ loop.index0 }}" method="POST" class="complete">
+                        <button type="submit">Complete</button>
+                    </form>
+                {% endif %}
+
+                <form action="/delete/{{ loop.index0 }}" method="POST" class="delete">
+                    <button type="submit">Delete</button>
+                </form>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+</body>
