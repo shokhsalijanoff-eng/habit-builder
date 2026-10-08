@@ -14,23 +14,21 @@ def home():
 
 @app.route("/add", methods=["POST"])
 def add_habit():
-    habit_name = request.form["name"]
+    habit_name = request.form["name"].strip()
+
+    if not habit_name:
+        return redirect("/")
 
     with open("habits.json", "r") as file:
         habits = json.load(file)
 
-    new_habit = {
-        "name": habit_name,
-        "completed": False
-    }
-
+    new_habit = {"name": habit_name, "completed": False}
     habits.append(new_habit)
 
     with open("habits.json", "w") as file:
         json.dump(habits, file, indent=4)
 
     return redirect("/")
-
 @app.route("/complete/<int:habit_id>", methods=["POST"])
 def complete_habit(habit_id):
     with open("habits.json", "r") as file:
