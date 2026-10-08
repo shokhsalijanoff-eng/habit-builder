@@ -6,61 +6,179 @@
     <title>Habit Builder</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-    <body>
+<body>
 
     <div class="container">
 
-        <h1>Habit Builder</h1>
+        <header class="header">
+    <div class="brand">
+        <div class="brand-title">
+            <span class="fire-icon">🔥</span>
+            <span class="habit-word">Habit</span>
+            <span class="builder-word">Builder</span>
+        </div>
 
-        <h2>Add New Habit</h2>
+        <div class="brand-line"></div>
 
-        <form action="/add" method="POST" class="add-form">
-            <input
-                type="text"
-                name="name"
-                placeholder="Enter a habit"
-                required
-            >
-            <button type="submit">Add Habit</button>
-        </form>
-<div class="progress">
-    <h2>Habit Progress</h2>
+        <p class="brand-tagline">
+            BUILD • TRACK • IMPROVE
+        </p>
 
-    <p>Total: {{ total }}</p>
-    <p>Completed: {{ completed }}</p>
-    <p>Remaining: {{ remaining }}</p>
-    <p>Progress: {{ progress }}%</p>
-</div>
-        <h2>My Habits</h2>
+        <p class="subtitle">
+            Build better habits, one day at a time.
+        </p>
+    </div>
 
-        {% for habit in habits %}
-            <div class="habit">
+    <div class="today">
+        <span class="status-dot"></span>
+        Today
+    </div>
+</header>
 
-                <p>
-                    <strong>{{ habit["name"] }}</strong>
-                    -
-                    {% if habit["completed"] %}
-                        Completed
-                    {% else %}
-                        Not completed
-                    {% endif %}
-                </p>
+        <section class="stats">
 
-                {% if not habit["completed"] %}
-                    <form action="/complete/{{ loop.index0 }}" method="POST" class="complete">
-                        <button type="submit">Complete</button>
-                    </form>
-                {% endif %}
-
-                <form action="/delete/{{ loop.index0 }}" method="POST" class="delete">
-                    <button type="submit">Delete</button>
-                </form>
-
+            <div class="stat-card">
+                <span class="stat-label">TOTAL HABITS</span>
+                <strong>{{ total }}</strong>
             </div>
-        {% endfor %}
+
+            <div class="stat-card">
+                <span class="stat-label">COMPLETED</span>
+                <strong>{{ completed }}</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">REMAINING</span>
+                <strong>{{ remaining }}</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">PROGRESS</span>
+                <strong>{{ progress }}%</strong>
+            </div>
+
+        </section>
+
+
+        <section class="progress-section">
+
+            <div class="section-header">
+                <div>
+                    <p class="section-label">YOUR PROGRESS</p>
+                    <h2>Keep going</h2>
+                </div>
+
+                <span class="percentage">{{ progress }}%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ progress }}%;"></div>
+            </div>
+
+        </section>
+
+
+        <section class="add-section">
+
+            <p class="section-label">ADD NEW HABIT</p>
+
+            <form action="/add" method="POST" class="add-form">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="What habit do you want to build?"
+                    required
+                >
+
+                <button type="submit">
+                    <span>+</span> Add Habit
+                </button>
+            </form>
+
+        </section>
+
+
+        <section class="habits-section">
+
+            <div class="section-header">
+                <div>
+                    <p class="section-label">YOUR ROUTINE</p>
+                    <h2>My Habits</h2>
+                </div>
+
+                <span class="habit-count">{{ total }} habits</span>
+            </div>
+
+
+            {% if habits %}
+
+                <div class="habit-list">
+
+                    {% for habit in habits %}
+
+                        <div class="habit-card {% if habit['completed'] %}completed{% endif %}">
+
+                            <div class="habit-info">
+
+                                <div class="habit-icon">
+                                    {% if habit["completed"] %}
+                                        ✓
+                                    {% else %}
+                                        ○
+                                    {% endif %}
+                                </div>
+
+                                <div>
+                                    <h3>{{ habit["name"] }}</h3>
+
+                                    {% if habit["completed"] %}
+                                        <p class="completed-text">Completed</p>
+                                    {% else %}
+                                        <p>Not completed yet</p>
+                                    {% endif %}
+                                </div>
+
+                            </div>
+
+
+                            <div class="actions">
+
+                                {% if not habit["completed"] %}
+                                    <form action="/complete/{{ loop.index0 }}" method="POST">
+                                        <button type="submit" class="complete-btn">
+                                            Complete
+                                        </button>
+                                    </form>
+                                {% endif %}
+
+                                <form action="/delete/{{ loop.index0 }}" method="POST">
+                                    <button type="submit" class="delete-btn">
+                                        Delete
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+                    <div class="empty-icon">+</div>
+                    <h3>No habits yet</h3>
+                    <p>Add your first habit above and start building your routine.</p>
+                </div>
+
+            {% endif %}
+
+        </section>
 
     </div>
 
 </body>
+</html>
