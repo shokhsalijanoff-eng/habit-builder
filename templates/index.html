@@ -25,7 +25,14 @@
             >
             <button type="submit">Add Habit</button>
         </form>
+<div class="progress">
+    <h2>Habit Progress</h2>
 
+    <p>Total: {{ total }}</p>
+    <p>Completed: {{ completed }}</p>
+    <p>Remaining: {{ remaining }}</p>
+    <p>Progress: {{ progress }}%</p>
+</div>
         <h2>My Habits</h2>
 
         {% for habit in habits %}

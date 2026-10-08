@@ -9,7 +9,23 @@ def home():
     with open("habits.json", "r") as file:
         habits = json.load(file)
 
-    return render_template("index.html", habits=habits)
+    total = len(habits)
+    completed = sum(1 for habit in habits if habit["completed"])
+    remaining = total - completed
+
+    if total > 0:
+        progress = round((completed / total) * 100)
+    else:
+        progress = 0
+
+    return render_template(
+        "index.html",
+        habits=habits,
+        total=total,
+        completed=completed,
+        remaining=remaining,
+        progress=progress
+    )
 
 
 @app.route("/add", methods=["POST"])
