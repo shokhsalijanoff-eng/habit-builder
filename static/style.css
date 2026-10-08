@@ -18,10 +18,8 @@ body {
 }
 
 
-/* HEADER */
-
 /* =========================
-   FIRE BRAND / HEADER
+   HEADER
    ========================= */
 
 .header {
@@ -30,8 +28,6 @@ body {
     align-items: center;
     margin-bottom: 45px;
 }
-
-/* Main title */
 
 .brand-title {
     display: flex;
@@ -59,8 +55,6 @@ body {
     text-shadow: 0 0 18px rgba(255, 170, 60, 0.2);
 }
 
-/* Small line under title */
-
 .brand-line {
     width: 75px;
     height: 3px;
@@ -75,8 +69,6 @@ body {
     );
 }
 
-/* Logo subtitle */
-
 .brand-tagline {
     margin: 0 0 7px;
     color: #ff8a2a;
@@ -85,15 +77,11 @@ body {
     letter-spacing: 3px;
 }
 
-/* Normal description */
-
 .subtitle {
     color: #a0a7b5;
     margin: 0;
     font-size: 15px;
 }
-
-/* Today badge */
 
 .today {
     background: #191d27;
@@ -114,7 +102,10 @@ body {
     box-shadow: 0 0 10px rgba(255, 122, 24, 0.7);
 }
 
-/* STATS */
+
+/* =========================
+   STATS
+   ========================= */
 
 .stats {
     display: grid;
@@ -133,7 +124,7 @@ body {
 .stat-label {
     display: block;
     font-size: 11px;
-    color: #7f8799;
+    color: #ff8a2a;
     letter-spacing: 1px;
     margin-bottom: 12px;
 }
@@ -143,7 +134,9 @@ body {
 }
 
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+   ========================= */
 
 .progress-section {
     background: #171a22;
@@ -157,6 +150,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: #ff8a2a;
+    margin: 0 0 8px;
 }
 
 .section-header h2 {
@@ -177,101 +178,23 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   FIRE BRAND / HEADER
-   ========================= */
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 45px;
-}
-
-/* Main title */
-
-.brand-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 46px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    line-height: 1;
-}
-
-.fire-icon {
-    font-size: 38px;
-    margin-right: 3px;
-    filter: drop-shadow(0 0 8px rgba(255, 120, 20, 0.45));
-}
-
-.habit-word {
-    color: #ff7a18;
-    text-shadow: 0 0 18px rgba(255, 100, 20, 0.25);
-}
-
-.builder-word {
-    color: #ffb347;
-    text-shadow: 0 0 18px rgba(255, 170, 60, 0.2);
-}
-
-/* Small line under title */
-
-.brand-line {
-    width: 75px;
-    height: 3px;
-    margin-top: 13px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.progress-fill {
+    height: 100%;
     background: linear-gradient(
         90deg,
         #ff5a00,
-        #ff9d2e,
-        transparent
+        #ff7a18,
+        #ffb347
     );
+    border-radius: 20px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 12px rgba(255, 100, 20, 0.35);
 }
 
-/* Logo subtitle */
 
-.brand-tagline {
-    margin: 0 0 7px;
-    color: #ff8a2a;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-}
-
-/* Normal description */
-
-.subtitle {
-    color: #a0a7b5;
-    margin: 0;
-    font-size: 15px;
-}
-
-/* Today badge */
-
-.today {
-    background: #191d27;
-    border: 1px solid #3a2b20;
-    padding: 11px 16px;
-    border-radius: 30px;
-    color: #d8dde5;
-    font-size: 14px;
-}
-
-.status-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: #ff7a18;
-    border-radius: 50%;
-    margin-right: 7px;
-    box-shadow: 0 0 10px rgba(255, 122, 24, 0.7);
-}
-
-/* ADD HABIT */
+/* =========================
+   ADD HABIT
+   ========================= */
 
 .add-section {
     background: #171a22;
@@ -316,12 +239,15 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 90, 0, 0.2);
 }
+
 .add-form button:hover {
     opacity: 0.9;
 }
 
 
-/* HABITS */
+/* =========================
+   HABITS
+   ========================= */
 
 .habits-section {
     margin-bottom: 40px;
@@ -348,7 +274,7 @@ body {
 }
 
 .habit-card:hover {
-    border-color: #3b4353;
+    border-color: #ff7a18;
 }
 
 .habit-info {
@@ -385,20 +311,18 @@ body {
 }
 
 .habit-card.completed .habit-icon {
-    background: #1d4033;
-    color: #5ee6a8;
+    background: #3b2b20;
+    color: #ff8a2a;
 }
 
 .completed-text {
     color: #ff9d4d !important;
 }
 
-.habit-card.completed .habit-icon {
-    background: #3b2b20;
-    color: #ff8a2a;
-}
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+   ========================= */
 
 .actions {
     display: flex;
@@ -424,7 +348,7 @@ body {
 }
 
 .complete-btn:hover {
-    background: #315441;
+    background: #50341f;
 }
 
 .delete-btn {
@@ -437,7 +361,9 @@ body {
 }
 
 
-/* EMPTY STATE */
+/* =========================
+   EMPTY STATE
+   ========================= */
 
 .empty-state {
     text-align: center;
@@ -456,7 +382,7 @@ body {
     justify-content: center;
     border-radius: 50%;
     background: #232936;
-    color: #8b93a7;
+    color: #ff8a2a;
     font-size: 25px;
 }
 
@@ -469,7 +395,9 @@ body {
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 700px) {
 
@@ -479,11 +407,16 @@ body {
 
     .header {
         flex-direction: column;
+        align-items: flex-start;
         gap: 20px;
     }
 
-    h1 {
-        font-size: 34px;
+    .brand-title {
+        font-size: 36px;
+    }
+
+    .fire-icon {
+        font-size: 30px;
     }
 
     .stats {
@@ -507,5 +440,4 @@ body {
     .actions {
         width: 100%;
     }
-
 }
